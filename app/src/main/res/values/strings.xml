@@ -2,4 +2,6 @@
     <string name="app_name">FortuneWheel</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start">START</string>
+    <string name="wheel_of_fortune">WHEEL OF FORTUNE</string>
 </resources>
