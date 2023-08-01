@@ -1,5 +1,6 @@
 package com.izzzya.fortunewheel
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,8 @@ import android.widget.ImageView
 import androidx.navigation.findNavController
 
 class MainActivity : AppCompatActivity() {
+    lateinit var player: MediaPlayer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         settingsBtn.setOnClickListener(){
             view.findNavController().navigate(R.id.action_global_settingsFragment)
         }
+
+        //music
+        player = MediaPlayer.create(this, R.raw.music)
+            player.start()
+
 
         //hiding ui
         this.window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
