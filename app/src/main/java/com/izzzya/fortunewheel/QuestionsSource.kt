@@ -24,7 +24,7 @@ class QuestionsSource {
         Question(
             "What is the name of the main antagonist in the Shakespeare play Othello?",
             2,
-            listOf("Tin", "William", "Mark")
+            listOf( "William", "Mark","Tin")
         ),
         Question(
             "What is the capital of New Zealand?",
