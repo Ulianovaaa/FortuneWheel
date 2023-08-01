@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 
 class HomeFragment : Fragment() {
@@ -22,5 +24,14 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val startBtn = view.findViewById<Button>(R.id.startBtn)
+        startBtn.setOnClickListener(){
+            findNavController().navigate(R.id.action_global_wheelFragment)
+        }
+    }
 
 }

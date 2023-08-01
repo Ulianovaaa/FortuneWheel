@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="start">START</string>
     <string name="wheel_of_fortune">WHEEL OF FORTUNE</string>
+    <string name="guide">Spin the wheel of fortune, answer quiz questions and earn points. Test your luck and intelligence with our app!</string>
 </resources>
