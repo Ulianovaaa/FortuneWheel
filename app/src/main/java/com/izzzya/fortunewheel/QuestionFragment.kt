@@ -1,32 +1,26 @@
 package com.izzzya.fortunewheel
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.findFragment
+import androidx.navigation.fragment.findNavController
+import kotlin.random.Random
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [QuestionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class QuestionFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -37,23 +31,44 @@ class QuestionFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_question, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment QuestionFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            QuestionFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val header = view.findViewById<TextView>(R.id.questionTV)
+        val ans1 = view.findViewById<Button>(R.id.answerBtn1)
+        val ans2 = view.findViewById<Button>(R.id.answerBtn2)
+        val ans3 = view.findViewById<Button>(R.id.answerBtn3)
+        fun rand(start: Int, end: Int): Int {
+            require(start <= end) { "Illegal Argument" }
+            return (start..end).random()
+        }
+        val question: Question = QuestionsSource.questionsList[rand(0, 4)]
+
+        header.text = question.question
+        ans1.text = question.listAnswers[0]
+        ans2.text = question.listAnswers[1]
+        ans3.text = question.listAnswers[2]
+
+        ans1.setOnClickListener(){
+            answerCheck(ans1, question)
+        }
+        ans2.setOnClickListener(){
+            answerCheck(ans2, question)
+        }
+        ans3.setOnClickListener(){
+            answerCheck(ans3, question)
+        }
+    }
+
+    private fun answerCheck(btn: Button, q: Question) {
+        val sound = MediaPlayer.create(requireContext(), R.raw.sound)
+        sound.setVolume(SharedPrefs.getSVol(), SharedPrefs.getSVol())
+        //проверка ответа
+        if (btn.text == q.listAnswers[q.answerIndex])
+        {
+            Toast.makeText(context, "Верно", Toast.LENGTH_SHORT).show()
+            sound.start()
+        } else Toast.makeText(context, "Неверно", Toast.LENGTH_SHORT).show()
+
     }
 }

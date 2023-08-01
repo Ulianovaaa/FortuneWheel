@@ -28,7 +28,7 @@
 
         <Button
             android:id="@+id/answerBtn2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/answer"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +43,7 @@
 
         <Button
             android:id="@+id/answerBtn3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/answer"
@@ -58,7 +58,7 @@
 
         <Button
             android:id="@+id/answerBtn1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:text="@string/answer"

@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        SharedPrefs(this)
         val view = findViewById<View>(R.id.nav_host_fragment)
 
         val infoBtn = findViewById<ImageView>(R.id.infoBtn)
@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         //сява джекпот минус
         // )))
         player = MediaPlayer.create(this, R.raw.music)
+        player.setVolume(SharedPrefs.getMVol(), SharedPrefs.getMVol())
             player.start()
 
 

@@ -7,6 +7,9 @@ data class Question(
     var listAnswers: List<String>
 )
 class QuestionsSource {
+    companion object{
+
+
     val questionsList = listOf<Question>(
         Question(
             "What was the old name for a Snickers bar before it changed in 1990?",
@@ -34,5 +37,5 @@ class QuestionsSource {
             listOf("Big Time Rush", "One Direction", "BTS")
         ),
 
-    )
+    )}
 }
