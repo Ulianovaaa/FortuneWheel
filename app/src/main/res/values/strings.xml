@@ -5,4 +5,6 @@
     <string name="wheel_of_fortune">WHEEL OF FORTUNE</string>
     <string name="guide">Spin the wheel of fortune, answer quiz questions and earn points. Test your luck and intelligence with our app!</string>
     <string name="how_to_play">how to play?</string>
+    <string name="default_question">default question?</string>
+    <string name="answer">Answer</string>
 </resources>

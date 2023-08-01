@@ -18,14 +18,20 @@ class MainActivity : AppCompatActivity() {
 
         val infoBtn = findViewById<ImageView>(R.id.infoBtn)
         val settingsBtn = findViewById<ImageView>(R.id.settingsBtn)
+        val backBtn = findViewById<ImageView>(R.id.backBtn)
         infoBtn.setOnClickListener(){
             view.findNavController().navigate(R.id.action_global_infoFragment)
         }
         settingsBtn.setOnClickListener(){
             view.findNavController().navigate(R.id.action_global_settingsFragment)
         }
+        backBtn.setOnClickListener(){
+            view.findNavController().navigate(R.id.action_global_wheelFragment)
+        }
 
         //music
+        //сява джекпот минус
+        // )))
         player = MediaPlayer.create(this, R.raw.music)
             player.start()
 
