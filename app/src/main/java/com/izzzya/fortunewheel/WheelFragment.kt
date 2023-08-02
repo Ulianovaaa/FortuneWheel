@@ -17,7 +17,7 @@ import java.util.Random
 
 
 class WheelFragment : Fragment() {
-    private val sectors = arrayOf<Int>(45, 25, 750, 450, 200, 125, 100, 75)
+    private val sectors = arrayOf(75, 45, 25, 750, 450, 200, 125, 100, )
     private var sectorDegrees = IntArray(sectors.size)
     private var rndSectorIndex = 0
     var spinning = false
@@ -59,7 +59,7 @@ class WheelFragment : Fragment() {
                 }
 
                 override fun onAnimationEnd(p0: Animation?) {
-                    val earnedCoins = sectors[sectors.size-(rndSectorIndex-1)]
+                    val earnedCoins = sectors[sectors.size-(rndSectorIndex+1)]
                     Toast.makeText(requireContext(), earnedCoins.toString(), Toast.LENGTH_SHORT).show()
                     spinning = false
                     findNavController().navigate(R.id.action_global_questionFragment)
