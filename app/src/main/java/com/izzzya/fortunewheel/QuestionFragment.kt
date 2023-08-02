@@ -1,5 +1,8 @@
 package com.izzzya.fortunewheel
 
+import android.graphics.ImageDecoder
+import android.graphics.drawable.AnimatedImageDrawable
+import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -35,6 +38,8 @@ class QuestionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val imgView: ImageView = view.findViewById(R.id.gifIV)
+        imgView.visibility = View.GONE
         requireActivity().findViewById<ImageView>(R.id.backBtn).visibility = View.GONE
         val header = view.findViewById<TextView>(R.id.questionTV)
         val ans1 = view.findViewById<Button>(R.id.answerBtn1)
@@ -68,9 +73,26 @@ class QuestionFragment : Fragment() {
         //проверка ответа
         if (btn.text == q.listAnswers[q.answerIndex])
         {
-            Toast.makeText(context, "Верно", Toast.LENGTH_SHORT).show()
+            btn.setBackgroundColor(getResources().getColor(R.color.green))
+            //Toast.makeText(context, "Верно", Toast.LENGTH_SHORT).show()
             sound.start()
-        } else Toast.makeText(context, "Неверно", Toast.LENGTH_SHORT).show()
+            requireActivity().findViewById<TextView>(R.id.moneyTV).text = SharedPrefs.getCoins().toString()
+            val imgView: ImageView = view!!.findViewById(R.id.gifIV)
+            imgView.visibility = View.VISIBLE
+            Thread{
+                val source = ImageDecoder.createSource(resources, R.drawable.giphy)
+                val drawable: Drawable = ImageDecoder.decodeDrawable(source)
+                imgView.post{
+                    imgView.setImageDrawable(drawable)
+                    (drawable as? AnimatedImageDrawable)?.start()
+                }
+            }.start()
+        } else{
+            btn.setBackgroundColor(getResources().getColor(R.color.red))
+            //Toast.makeText(context, "Неверно", Toast.LENGTH_SHORT).show()
+            requireActivity().findViewById<TextView>(R.id.moneyTV).text = "-${SharedPrefs.getCoins()}"
+
+        }
 
     }
 }

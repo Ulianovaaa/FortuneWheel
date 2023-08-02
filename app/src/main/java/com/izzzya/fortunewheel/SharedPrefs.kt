@@ -14,6 +14,7 @@ class SharedPrefs(context: Context) {
         const val PREFERENCES = "prefs"
         const val MUSIC_VOL: Float = 1F
         const val SOUND_VOL: Float = 1F
+        const val COINS: Int = 0
 
         fun getMVol(): Float{
             return sharedPref?.getFloat("MUSIC_VOL", 1F)!!
@@ -32,6 +33,17 @@ class SharedPrefs(context: Context) {
         fun setSVol(v: Float){
             sharedPref?.edit()
                 ?.putFloat("SOUND_VOL", v)
+                ?.apply()
+        }
+
+
+        fun getCoins(): Int{
+            return sharedPref?.getInt("COINS", 0)!!
+        }
+
+        fun setCoins(c: Int){
+            sharedPref?.edit()
+                ?.putInt("COINS", c)
                 ?.apply()
         }
 

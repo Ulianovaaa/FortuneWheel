@@ -62,8 +62,8 @@ class WheelFragment : Fragment() {
 
                 override fun onAnimationEnd(p0: Animation?) {
                     val earnedCoins = sectors[sectors.size-(rndSectorIndex+1)]
-                    Toast.makeText(requireContext(), earnedCoins.toString(), Toast.LENGTH_SHORT).show()
-                    requireActivity().findViewById<TextView>(R.id.moneyTV).text = earnedCoins.toString()
+                    SharedPrefs.setCoins(earnedCoins)
+                    //Toast.makeText(requireContext(), earnedCoins.toString(), Toast.LENGTH_SHORT).show()
                     spinning = false
                     findNavController().navigate(R.id.action_global_questionFragment)
 
