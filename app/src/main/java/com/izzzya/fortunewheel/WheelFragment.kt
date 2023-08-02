@@ -11,6 +11,7 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.RotateAnimation
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import java.util.Random
@@ -40,6 +41,7 @@ class WheelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().findViewById<ImageView>(R.id.backBtn).visibility = View.GONE
         val spinBtn = view.findViewById<Button>(R.id.spinBtn)
         val earned = 0
         val wheel = view.findViewById<ImageView>(R.id.wheelIV)
@@ -61,6 +63,7 @@ class WheelFragment : Fragment() {
                 override fun onAnimationEnd(p0: Animation?) {
                     val earnedCoins = sectors[sectors.size-(rndSectorIndex+1)]
                     Toast.makeText(requireContext(), earnedCoins.toString(), Toast.LENGTH_SHORT).show()
+                    requireActivity().findViewById<TextView>(R.id.moneyTV).text = earnedCoins.toString()
                     spinning = false
                     findNavController().navigate(R.id.action_global_questionFragment)
 

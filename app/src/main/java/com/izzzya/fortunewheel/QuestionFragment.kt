@@ -8,6 +8,7 @@ import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.findFragment
@@ -34,6 +35,7 @@ class QuestionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().findViewById<ImageView>(R.id.backBtn).visibility = View.GONE
         val header = view.findViewById<TextView>(R.id.questionTV)
         val ans1 = view.findViewById<Button>(R.id.answerBtn1)
         val ans2 = view.findViewById<Button>(R.id.answerBtn2)

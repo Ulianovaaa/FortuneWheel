@@ -38,6 +38,27 @@
             android:padding="10dp"
             android:layout_width="70dp"
             android:layout_height="70dp"/>
+
+        <ImageView
+            android:id="@+id/moneyIV"
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:padding="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/settingsBtn"
+            app:layout_constraintStart_toStartOf="@+id/backBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/money" />
+
+        <TextView
+            android:id="@+id/moneyTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/moneyIV"
+            app:layout_constraintStart_toStartOf="@+id/moneyIV"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.fragment.app.FragmentContainerView

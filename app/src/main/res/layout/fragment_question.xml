@@ -24,6 +24,9 @@
             android:breakStrategy="simple"
             android:maxWidth="350dp"
             android:singleLine="false"
+            android:background="@drawable/button_back"
+            android:padding="10dp"
+            android:textColor="@color/white"
             />
 
         <Button
