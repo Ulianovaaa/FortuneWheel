@@ -2,6 +2,7 @@ package com.izzzya.fortunewheel
 
 import android.animation.Animator.AnimatorListener
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -62,7 +63,8 @@ class WheelFragment : Fragment() {
 
                 override fun onAnimationEnd(p0: Animation?) {
                     val earnedCoins = sectors[sectors.size-(rndSectorIndex+1)]
-                    SharedPrefs.setCoins(earnedCoins)
+                    SharedPrefs.setCurCoins(earnedCoins)
+                    Log.i("WHEEL / CUR COINS", SharedPrefs.getCurCoins().toString() )
                     //Toast.makeText(requireContext(), earnedCoins.toString(), Toast.LENGTH_SHORT).show()
                     spinning = false
                     findNavController().navigate(R.id.action_global_questionFragment)

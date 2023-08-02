@@ -11,10 +11,11 @@ class SharedPrefs(context: Context) {
     }
     companion object {
         private var sharedPref: SharedPreferences? = null
-        const val PREFERENCES = "prefs"
-        const val MUSIC_VOL: Float = 1F
-        const val SOUND_VOL: Float = 1F
-        const val COINS: Int = 0
+        private const val PREFERENCES = "prefs"
+        private const val MUSIC_VOL: Float = 1F
+        private const val SOUND_VOL: Float = 1F
+        private const val COINS: Int = 0
+        private const val CURRENT_COINS: Int = 0
 
         fun getMVol(): Float{
             return sharedPref?.getFloat("MUSIC_VOL", 1F)!!
@@ -42,8 +43,20 @@ class SharedPrefs(context: Context) {
         }
 
         fun setCoins(c: Int){
+            val newCoins = getCoins() + c
             sharedPref?.edit()
-                ?.putInt("COINS", c)
+                ?.putInt("COINS", newCoins)
+                ?.apply()
+        }
+
+        fun getCurCoins(): Int{
+            return sharedPref?.getInt("CURRENT_COINS", 0)!!
+        }
+
+        fun setCurCoins(c: Int){
+            val newCoins = getCoins() + c
+            sharedPref?.edit()
+                ?.putInt("CURRENT_COINS", newCoins)
                 ?.apply()
         }
 
